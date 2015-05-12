@@ -1,0 +1,23 @@
+.container
+  .column
+    .panel.panel-default.col-md-6.col-md-offset-3
+      .panel-body
+        %h1.col-xs-12.col-md-7
+          Entrar
+
+        = form_tag admin_session_path, class: "col-xs-12" do
+          .form-group
+            = label_tag 'admin[email]', t('form.email')
+            %br
+            = text_field_tag 'admin[email]', nil, class: "form-control"
+          .form-group
+            = label_tag 'admin[password]', t('form.password')
+            %br
+            = password_field_tag 'admin[password]', nil, class: "form-control"
+            = link_to t('forgot_pass'), new_admin_password_path(:admin)
+          .form-group
+            = check_box_tag 'admin[remember_me]'
+            = label_tag 'admin[remember_me]', t('remember')
+          .form-group
+            %button.btn.btn-lg.btn-primary=t("sign_in")
+          .form-group
