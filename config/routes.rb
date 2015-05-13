@@ -1,13 +1,19 @@
 Rails.application.routes.draw do  
-  devise_for :admins, controllers: {sessions: 'admin/sessions'}, :path_names => { :sign_in => "login", :sign_out => "logout", :sign_up => "registrar" } 
+  devise_for :admins, controllers: {sessions: 'admin/sessions'}, 
+    :path_names => { :sign_in => "login", :sign_out => "logout", :sign_up => "registrar" } 
   devise_for :users, :path => 'usuario', :path_names => { :sign_in => "login", :sign_out => "logout", :sign_up => "registrar" } 
 
   root 'welcome#index'
   
-  namespace :admin do
-    get 'login' => 'sessions#login'
-    post 'login' => 'sessions#login'
-  end
+
+  # devise_scope :admin do
+  # namespace :admin do
+  #   get 'login' => 'sessions#login'
+  #   post 'login' => 'sessions#login'
+  # end
+    
+  # end
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

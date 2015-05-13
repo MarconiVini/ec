@@ -1,0 +1,26 @@
+.container
+  .column
+    .panel.panel-default.col-md-6.col-md-offset-3
+      .panel-body
+        %h1.col-xs-12
+          Entrar
+
+        = form_for(resource, as: resource_name, url: session_path(resource_name), class: "col-xs-12") do |f|
+          .form-group
+            = f.label :email, t('form.email')
+            %br
+            = f.email_field :email, autofocus: true, class: "form-control"
+          .form-group
+            = f.label :password, t('form.password')
+            %br
+            = f.password_field :password, autocomplete: "off", class: "form-control"
+            = link_to t('forgot_pass'), new_admin_password_path(:admin)
+          
+          - if devise_mapping.rememberable?
+            .form-group
+              = f.check_box :remember_me
+              = f.label :remember_me, t('remember')
+
+          .form-group
+            %button.btn.btn-lg.btn-primary=t("sign_in")
+

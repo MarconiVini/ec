@@ -1,14 +1,9 @@
-class Admin::SessionsController < ApplicationController
+class Admin::SessionsController < Devise::SessionsController
   helper :sessions
   layout "login"#, only: [:login, :sign_up]
 
-
-  def index
-    binding.pry
-  end
-
   def login
-
+    super
   end
   
   def create
