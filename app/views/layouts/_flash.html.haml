@@ -1,2 +1,4 @@
-%p.notice=notice
-%p.alert=alert
+-unless notice.nil?
+  %div.alert.alert-info=notice
+-unless alert.nil?
+  %div.alert.alert-danger=alert

@@ -6,5 +6,4 @@ FactoryGirl.define do
     password    { random_password } 
     password_confirmation { random_password } 
   end
-
 end

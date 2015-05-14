@@ -3,11 +3,7 @@ class Admin::SessionsController < Devise::SessionsController
   layout "login"#, only: [:login, :sign_up]
 
   def login
-    super
-  end
-  
-  def create
-    super
+    #super
   end
 
   def sign_up
