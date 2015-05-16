@@ -5,15 +5,9 @@ Rails.application.routes.draw do
 
   root 'welcome#index'
   
-
-  # devise_scope :admin do
-  # namespace :admin do
-  #   get 'login' => 'sessions#login'
-  #   post 'login' => 'sessions#login'
-  # end
-    
-  # end
-
+  namespace :admin do
+    get 'dashboard' => 'dashboard#index'
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
