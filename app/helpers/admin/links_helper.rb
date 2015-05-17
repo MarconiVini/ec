@@ -11,10 +11,19 @@ module Admin::LinksHelper
 
   def build_links(resource)
     YAML.load_file("config/admin_links.yml")[resource].collect do |link|
-      active = (eval(link.last) == request.path) ? "active" : ""
-      path = link.last.empty? ? "#" : eval(link.last)
-
-      content_tag(:li, link_to(link.first, path), class: active)
+      active = (evaluete_path(link.last) == request.path) ? "active" : ""
+      content_tag(:li, link_to(link.first, evaluete_path(link.last)), class: active)
     end.join.html_safe  
+  end
+
+  private
+
+  def evaluete_path(resource)
+    return "#" if resource.empty?
+    begin
+      eval(resource)
+    rescue
+      resource
+    end      
   end
 end
