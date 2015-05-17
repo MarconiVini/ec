@@ -6,26 +6,12 @@
     =# javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
-    .navbar.navbar-inverse.navbar-fixed-top
-      .container-fluid
-        .navbar-header
-          %a.navbar-brand Admin
-        .navbar-collapse.collapse
-          .nav.navbar-nav.navbar-right
-            %li
-              %a Dashboard
-            %li
-              %a Configurações
-            %li
-              %a Profile
-
+    =render "layouts/admin/header"
     .container-fluid
       .row
         .col-sm-3.col-md-2.sidebar
-          %ul.nav.nav-sidebar
-            %li
-              %a Administradores
-            %li
-              %a Produtos
+          =render "layouts/admin/sidebar"
         .col-sm-9.col-sm-offset-3.col-md-10.col-md-offset-2.main
-          %h1.page-header Dashboard    
+          %h1.page-header Dashboard
+
+          test
