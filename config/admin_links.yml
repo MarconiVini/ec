@@ -4,5 +4,5 @@ header:
   Profile: ""
 
 lateral:
-  Administradores: ""
+  Administradores: "admin_admins_path"
   Produtos: ""

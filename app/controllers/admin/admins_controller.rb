@@ -1,7 +1,11 @@
-class Admin::AdminsController < ActionController::Base
-  # Prevent CSRF attacks by raising an exception.
-  # For APIs, you may want to use :null_session instead.
-  protect_from_forgery with: :exception
+class Admin::AdminsController < Admin::BaseAdminController
 
-  layout "admin/master"
+  def index
+  end
+
+  
+  private
+  def set_header
+  	@header = "Administradores"
+  end
 end
