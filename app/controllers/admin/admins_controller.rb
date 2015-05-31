@@ -1,7 +1,7 @@
 class Admin::AdminsController < Admin::BaseAdminController
 
   def index
-    @admins = Admin.all
+    @admins = Admin.page(params[:page]) 
   end
 
   

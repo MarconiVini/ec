@@ -8,9 +8,9 @@
     %th
       =entity.human_attribute_name(:created_at)
     %th
-      Deletar
-    %th
       Editar  
+    %th
+      Deletar
   - @admins.each do |admin|
     %tr
       %td
@@ -19,4 +19,11 @@
         =admin.email
       %td
         =admin.created_at
+      %td
+        edit_link
+      %td
+        delete_link
+
+=will_paginate @admins
+
 
