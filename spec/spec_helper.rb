@@ -21,6 +21,8 @@ require "devise"
 Dir["./spec/support/**/*.rb"].each {|f| require f}
 RSpec.configure do |config|
   config.include Devise::TestHelpers, :type => :controller
+  config.include ControllerMacros, :type => :controller
+
   config.include FactoryGirl::Syntax::Methods
   # config.before(:suite) do
   #   begin

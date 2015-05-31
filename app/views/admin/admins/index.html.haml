@@ -1,0 +1,22 @@
+- entity = Admin
+%table.table.table-hover
+  %tr
+    %th
+      =entity.human_attribute_name(:name)
+    %th
+      =entity.human_attribute_name(:email)    
+    %th
+      =entity.human_attribute_name(:created_at)
+    %th
+      Deletar
+    %th
+      Editar  
+  - @admins.each do |admin|
+    %tr
+      %td
+        =admin.name
+      %td
+        =admin.email
+      %td
+        =admin.created_at
+

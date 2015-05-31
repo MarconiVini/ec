@@ -5,6 +5,10 @@ class Admin::BaseAdminController < ActionController::Base
 
   layout "admin/master"
 
-  before_action :set_header
+  before_action :set_header, :check_admin_is_logged_in
+
+  def check_admin_is_logged_in
+    redirect_to(controller: "sessions", action: "new") unless current_admin
+  end
 
 end
