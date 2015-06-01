@@ -24,6 +24,9 @@
       %td
         delete_link
 
-=will_paginate @admins
+  %tr
+    %td
+      =will_paginate @admins
 
+=button_to "Novo admin", new_admin_admin_path, method: :get, css: "btn btn-default"
 
