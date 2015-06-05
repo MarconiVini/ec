@@ -22,7 +22,7 @@
       %td
         =link_to t(:edit), edit_admin_admin_path(admin)
       %td
-        delete_link
+        =button_to "t(:delete)", admin_admin_path(admin), method: :delete, data: { confirm: "Está certo disso?" }
 
   %tr
     %td

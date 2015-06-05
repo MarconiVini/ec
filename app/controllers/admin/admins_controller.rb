@@ -21,6 +21,23 @@ class Admin::AdminsController < Admin::BaseAdminController
   def edit
     @admin = Admin.find params[:id]
   end
+
+  def update
+    @admin = Admin.find(params[:id])
+    if @admin.update_attributes(admin_params)
+      flash[:notice] = "O Admin \"#{@admin.name}\" foi editado com sucesso !"
+      redirect_to :action => :index
+    else
+      render :action => :edit
+    end
+  end
+
+  def destroy
+    @admin = Admin.find(params[:id])
+    @admin.destroy
+    flash[:notice] = "O Admin \"#{@admin.name}\" foi deletado !"
+    redirect_to :action => :index
+  end
   
   private
   def set_header
