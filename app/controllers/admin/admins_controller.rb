@@ -17,6 +17,10 @@ class Admin::AdminsController < Admin::BaseAdminController
       render :new
     end
   end
+
+  def edit
+    @admin = Admin.find params[:id]
+  end
   
   private
   def set_header

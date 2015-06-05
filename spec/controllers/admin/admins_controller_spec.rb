@@ -5,9 +5,10 @@ RSpec.describe Admin::AdminsController, :type => :controller do
   include Devise::TestHelpers
 
   let!(:admin) { create(:admin) }
+  
+  before(:each) { login(admin) }
 
   describe "#index" do
-    before(:each) { login(admin) }
     subject { get :index }
     
     it "requests all admins" do
@@ -22,6 +23,13 @@ RSpec.describe Admin::AdminsController, :type => :controller do
         subject
         expect(assigns(:admins).to_a.count).to eq admin_list.count 
       end
+    end
+  end
+
+  describe "#edit" do
+    subject { get :edit, id: admin.id }
+    it "reaches the edit pages" do
+      subject
     end
   end
 end
