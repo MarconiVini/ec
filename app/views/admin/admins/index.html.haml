@@ -20,9 +20,9 @@
       %td
         =admin.created_at
       %td
-        =link_to t(:edit), edit_admin_admin_path(admin)
+        =button_to t(:edit), edit_admin_admin_path(admin), class: "btn btn-default"
       %td
-        =button_to "t(:delete)", admin_admin_path(admin), method: :delete, data: { confirm: "Está certo disso?" }
+        =button_to t(:delete), admin_admin_path(admin), method: :delete, data: { confirm: "Está certo disso?" }, class: "btn btn-danger"
 
   %tr
     %td

@@ -10,5 +10,4 @@ class Admin::BaseAdminController < ActionController::Base
   def check_admin_is_logged_in
     redirect_to(controller: "sessions", action: "new") unless current_admin
   end
-
 end
