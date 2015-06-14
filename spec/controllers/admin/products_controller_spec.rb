@@ -1,7 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe Admin::ProductsController, :type => :controller do
+  include Devise::TestHelpers
 
+  let!(:admin) { create(:admin) }
+  
+  before(:each) { login(admin) }
+  
   describe "GET index" do
     it "returns http success" do
       get :index

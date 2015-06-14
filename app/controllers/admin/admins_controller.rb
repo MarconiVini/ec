@@ -41,7 +41,7 @@ class Admin::AdminsController < Admin::BaseAdminController
   
   private
   def set_header
-  	@header = "Administradores - #{action_name}"
+    @header = "Administradores - #{action_name}"
   end
 
   def admin_params

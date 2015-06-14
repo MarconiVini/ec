@@ -1,16 +1,16 @@
 class Admin::ProductsController < Admin::BaseAdminController
   def index
-    @products = Products.all
+    @products = Product.page(params[:page])
   end
 
   def new
-    @products = Products.new
+    @product = Product.new
   end
 
   def create
-    @products = Products.new products_params
-    if @products.save
-      flash[:notice] = "O Products \"#{@Products.name}\" foi criado com sucesso !"
+    @product = Product.new product_params
+    if @product.save
+      flash[:notice] = "O Produto \"#{@product.name}\" foi criado com sucesso !"
       redirect_to action: :index
     else
       render :new
@@ -31,7 +31,7 @@ class Admin::ProductsController < Admin::BaseAdminController
     @header = "Administradores - #{action_name}"
   end
 
-  def admin_params
-    params.require(:admin).permit(:name, :email, :password, :password_confirmation)
+  def product_params
+    params.require(:product).permit(:name)
   end
 end

@@ -1,2 +1,30 @@
-%h1 Admin::Products#index
-%p Find me in app/views/admin/products/index.html.haml
+- entity = Product
+%table.table.table-hover
+  %tr
+    %th
+      =entity.human_attribute_name(:name)
+    %th
+      =entity.human_attribute_name(:slug)
+    %th
+      Editar  
+    %th
+      Deletar
+  - @products.each do |product|
+    %tr
+      %td
+        =product.name
+      %td
+        =product.slug.nil? ? t("no_slug") : "/#{product.slug}"
+        =#product.slug.nil? ? I18n.t("general.no_slug") : "/#{product.slug}"
+      %td
+        =product.created_at
+      %td
+        =button_to t(:edit), edit_admin_product_path(product), class: "btn btn-default"
+      %td
+        =button_to t(:delete), admin_product_path(product), method: :delete, data: { confirm: t(:are_you_sure) }, class: "btn btn-danger"
+
+  %tr
+    %td
+      =paginate @products
+
+=button_to t("buttons.new_product"), new_admin_product_path, method: :get, css: "btn btn-default"

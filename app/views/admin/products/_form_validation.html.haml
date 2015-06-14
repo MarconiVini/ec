@@ -1,0 +1,6 @@
+-if @product.errors.any?
+  .well.alert.alert-danger
+    %p= "Devido à #{pluralize(@product.errors.count, 'erro')}. Não foi possível salvar o produto."
+    %ul
+      - @product.errors.full_messages.each do |msg|
+        %li= msg

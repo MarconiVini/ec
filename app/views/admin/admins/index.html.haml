@@ -22,11 +22,11 @@
       %td
         =button_to t(:edit), edit_admin_admin_path(admin), class: "btn btn-default"
       %td
-        =button_to t(:delete), admin_admin_path(admin), method: :delete, data: { confirm: "Está certo disso?" }, class: "btn btn-danger"
+        =button_to t(:delete), admin_admin_path(admin), method: :delete, data: { confirm: t(:are_you_sure) }, class: "btn btn-danger"
 
   %tr
     %td
       =paginate @admins
 
-=button_to "Novo admin", new_admin_admin_path, method: :get, css: "btn btn-default"
+=button_to t("buttons.new_admin"), new_admin_admin_path, method: :get, css: "btn btn-default"
 

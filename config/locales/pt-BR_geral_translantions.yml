@@ -1,0 +1,7 @@
+---
+pt-BR:
+  no_slug: "---Sem slug---"
+  are_you_sure: "Está certo disso?"
+  buttons:
+    new_admin: "Novo admin"
+    new_product: "novo produto"
