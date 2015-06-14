@@ -5,5 +5,4 @@ class Admin < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   validates :name, presence: true
-  self.per_page = 10
 end
