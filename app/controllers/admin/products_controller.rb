@@ -17,6 +17,16 @@ class Admin::ProductsController < Admin::BaseAdminController
     end
   end
 
+  def update
+    product = Product.find(params[:product_id])
+    if product.update_attributes product_params
+      flash[:notice] = "O Produto \"#{product.name}\" foi editado com sucesso !"
+      redirect_to admin_products_path
+    else
+      render :action => :edit
+    end
+  end
+
   def show
     @product = Product.find(params[:product_id])
   end
