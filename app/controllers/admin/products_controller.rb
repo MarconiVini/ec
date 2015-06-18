@@ -18,12 +18,17 @@ class Admin::ProductsController < Admin::BaseAdminController
   end
 
   def show
+    @product = Product.find(params[:product_id])
   end
 
   def destroy
+    product = Product.find(params[:product_id])
+    product.destroy
+    redirect_to admin_products_path
   end
 
   def edit
+    @product = Product.find(params[:product_id])
   end
 
   private

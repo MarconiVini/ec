@@ -6,7 +6,11 @@
     %th
       =entity.human_attribute_name(:slug)
     %th
-      Editar  
+      Criado
+    %th
+      Visualizar
+    %th
+      Editar
     %th
       Deletar
   - @products.each do |product|
@@ -15,11 +19,12 @@
         =product.name
       %td
         =product.slug.nil? ? t("no_slug") : "/#{product.slug}"
-        =#product.slug.nil? ? I18n.t("general.no_slug") : "/#{product.slug}"
       %td
         =product.created_at
       %td
-        =button_to t(:edit), edit_admin_product_path(product), class: "btn btn-default"
+        =link_to t("buttons.show_product"), admin_product_path(product), class: "btn btn-default"
+      %td
+        =link_to t(:edit), edit_admin_product_path(product), class: "btn btn-default"
       %td
         =button_to t(:delete), admin_product_path(product), method: :delete, data: { confirm: t(:are_you_sure) }, class: "btn btn-danger"
 
