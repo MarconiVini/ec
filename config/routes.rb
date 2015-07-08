@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   namespace :admin do
     get 'dashboard' => 'dashboard#index'
     resources :admins, except: [:show]
-    resources :products, param: :product_id
+    resources :products#, param: :product_id
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -3,4 +3,7 @@
     =f.label :name
     =f.text_field :name, class: "form-control"
   .form-group
+    = f.label :images
+    = f.file_field :images
+  .form-group
     =f.submit class: "btn btn-default"

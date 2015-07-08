@@ -8,7 +8,10 @@ class Admin::ProductsController < Admin::BaseAdminController
   end
 
   def create
-    @product = Product.new product_params
+    params = product_params.to_h
+    @image = Image.new(file: params.delete("images"))
+    @product = Product.new params
+    @product.images << @image
     if @product.save
       flash[:notice] = "O Produto \"#{@product.name}\" foi criado com sucesso !"
       redirect_to action: :index
@@ -18,7 +21,7 @@ class Admin::ProductsController < Admin::BaseAdminController
   end
 
   def update
-    product = Product.find(params[:product_id])
+    product = Product.find(params[:id])
     if product.update_attributes product_params
       flash[:notice] = "O Produto \"#{product.name}\" foi editado com sucesso !"
       redirect_to admin_products_path
@@ -28,17 +31,17 @@ class Admin::ProductsController < Admin::BaseAdminController
   end
 
   def show
-    @product = Product.find(params[:product_id])
+    @product = Product.find(params[:id])
   end
 
   def destroy
-    product = Product.find(params[:product_id])
-    product.destroy
+    product = Product.find(params[:id])
+    product.delete
     redirect_to admin_products_path
   end
 
   def edit
-    @product = Product.find(params[:product_id])
+    @product = Product.find(params[:id])
   end
 
   private
@@ -47,6 +50,6 @@ class Admin::ProductsController < Admin::BaseAdminController
   end
 
   def product_params
-    params.require(:product).permit(:name)
+    params.require(:product).permit(:name, :images)
   end
 end

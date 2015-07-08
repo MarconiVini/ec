@@ -15,31 +15,35 @@ RSpec.describe Admin::ProductsController, :type => :controller do
   end
 
   describe "GET create" do
+    let(:product) { {product: attributes_for(:product)} }
     it "returns http success" do
-      get :create
+      post :create, product
       expect(response).to be_success
     end
   end
 
+
   describe "GET show" do
+    let(:product) { create(:product) }
     it "returns http success" do
-      get :show
+      get :show, id: product.slug
       expect(response).to be_success
     end
   end
 
   describe "GET destroy" do
+    let!(:product) { create(:product) }
+    let(:deletion) { delete :destroy, id: product.slug }
     it "returns http success" do
-      get :destroy
-      expect(response).to be_success
+      expect{ deletion }.to change{Product.count}.from(1).to(0)
     end
   end
 
   describe "GET edit" do
+    let(:product) { create(:product) }
     it "returns http success" do
-      get :edit
+      get :edit, id: product.slug
       expect(response).to be_success
     end
   end
-
 end

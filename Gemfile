@@ -9,6 +9,12 @@ gem 'pg'
 gem 'mongoid' 
 gem 'mongoid-slug'
 
+#two gems to support image for aws for products
+gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
+gem 'mongoid-grid_fs', github: 'ahoward/mongoid-grid_fs'
+gem "fog"
+gem "mini_magick"
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -46,6 +52,8 @@ group :development, :test do
   gem 'pry-rails'
   gem 'guard-rspec', require: false
   gem 'capybara'
+  gem 'mongoid-rspec'
+  gem 'database_cleaner'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
   gem "better_errors"
