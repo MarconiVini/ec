@@ -8,10 +8,8 @@ class Admin::ProductsController < Admin::BaseAdminController
   end
 
   def create
-    params = product_params.to_h
-    @image = Image.new(file: params.delete("images"))
-    @product = Product.new params
-    @product.images << @image
+    @product = Product.new(name: product_params[:name])
+    @product = issue_images_to_model(product_params["files"], @product)
     if @product.save
       flash[:notice] = "O Produto \"#{@product.name}\" foi criado com sucesso !"
       redirect_to action: :index
@@ -21,9 +19,11 @@ class Admin::ProductsController < Admin::BaseAdminController
   end
 
   def update
-    product = Product.find(params[:id])
-    if product.update_attributes product_params
-      flash[:notice] = "O Produto \"#{product.name}\" foi editado com sucesso !"
+    @product = Product.find(params[:id])
+    paramters = product_params
+    @product = issue_images_to_model(paramters.delete("files"), @product)
+    if @product.update_attributes paramters
+      flash[:notice] = "O Produto \"#{@product.name}\" foi editado com sucesso !"
       redirect_to admin_products_path
     else
       render :action => :edit
@@ -49,7 +49,16 @@ class Admin::ProductsController < Admin::BaseAdminController
     @header = "Administradores - #{action_name}"
   end
 
+  def issue_images_to_model(product_files, product)
+    if !product_files.blank?
+      product_files.each do |file|
+        product.images << Image.new(file: file)    
+      end
+    end
+    product
+  end
+
   def product_params
-    params.require(:product).permit(:name, :images)
+    params.require(:product).permit(:name, files: [])
   end
 end

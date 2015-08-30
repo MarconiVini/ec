@@ -7,7 +7,8 @@
 
 .form-group
   images:
-  %a{href: @product.images.first.file.url, target: "_blank"}
-    %img{src: @product.images.first.file.thumb.url}
+  -@product.images.each do |image| 
+    %a{href: image.file.url, target: "_blank"}
+      %img{src: image.file.thumb.url}
   
 =link_to "voltar", admin_products_path

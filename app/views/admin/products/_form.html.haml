@@ -4,6 +4,6 @@
     =f.text_field :name, class: "form-control"
   .form-group
     = f.label :images
-    = f.file_field :images
+    = f.file_field :images, multiple: true, name: "product[files][]"
   .form-group
     =f.submit class: "btn btn-default"
