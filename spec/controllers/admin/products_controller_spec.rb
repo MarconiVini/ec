@@ -14,11 +14,13 @@ RSpec.describe Admin::ProductsController, :type => :controller do
     end
   end
 
-  describe "GET create" do
-    let(:product) { {product: attributes_for(:product)} }
+  describe "POST create" do
+    let(:file) { Rack::Test::UploadedFile.new("#{Rails.root}/spec/fixtures/model/product/test-image.jpg") }
+    let(:product) { { product: attributes_for(:product, files: [file]) } }
+    let(:product_post) { post :create, product }
     it "returns http success" do
-      post :create, product
-      expect(response).to be_success
+      expect{ product_post }.to change{Product.count}.from(0).to(1)
+      expect(response.code).to eq "302"
     end
   end
 
