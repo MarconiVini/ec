@@ -24,6 +24,13 @@ RSpec.configure do |config|
   config.include ControllerMacros, :type => :controller
 
   config.include FactoryGirl::Syntax::Methods
+
+  config.after(:each) do
+    if Rails.env.test? || Rails.env.cucumber?
+      FileUtils.rm_rf(Dir["#{Rails.root}/public/uploads/tmp"])
+    end 
+  end
+
   # config.before(:suite) do
   #   begin
   #     DatabaseCleaner.start
