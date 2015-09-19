@@ -2,11 +2,11 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.1'
+gem 'rails', '4.2.4'
 # Use sqlite3 as the database for Active Record
 gem 'pg'
 #database for heavy load
-gem 'mongoid' 
+gem 'mongoid', '4.0.2' 
 gem 'mongoid-slug'
 
 #two gems to support image for aws for products
@@ -53,7 +53,7 @@ group :development, :test do
   gem 'guard-rspec', require: false
   gem 'capybara'
   gem 'mongoid-rspec'
-  gem 'database_cleaner'
+  gem 'database_cleaner', '1.4.1'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
   gem "better_errors"
