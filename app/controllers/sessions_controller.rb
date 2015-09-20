@@ -1,8 +1,12 @@
-class Admin::SessionsController < Devise::SessionsController
-  helper :sessions
-  layout "admin_login"#, only: [:login, :sign_up]
+class SessionsController < Devise::SessionsController
+  layout "login"#, only: [:login, :sign_up]
+
+  def new
+    super
+  end
 
   def login
+    binding.pry
     #super
   end
 
