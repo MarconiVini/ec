@@ -8,7 +8,7 @@
       .row
         =render 'layouts/flash'
         = yield
-  -if Rails.env.development?
+  -if Rails.env.development? == false
     params
     = debug(params) 
     %hr

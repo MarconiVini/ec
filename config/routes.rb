@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :admins, controllers: {sessions: 'admin/sessions'}, 
     :path_names => { :sign_in => "login", :sign_out => "logout", :sign_up => "registrar" } 
 
-  devise_for :users, :path => 'usuario', controllers: { sessions: 'sessions' }, 
+  devise_for :users, :path => 'usuario', controllers: { sessions: 'sessions', registrations: 'registrations' }, 
     :path_names => { :sign_in => "login", :sign_out => "logout", :sign_up => "registrar" } 
 
   root 'welcome#index'

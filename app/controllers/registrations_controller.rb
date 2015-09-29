@@ -1,4 +1,4 @@
-class SessionsController < Devise::SessionsController
+class RegistrationsController < Devise::RegistrationsController
   layout "login"#, only: [:login, :sign_up]
 
   def new
