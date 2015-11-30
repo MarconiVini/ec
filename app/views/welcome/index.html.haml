@@ -1,1 +1,7 @@
-hello
+%ul
+  - @products.each do |p|
+    %li
+      %a
+        =p.name
+        %br
+        =image_tag p.images.first.file.url

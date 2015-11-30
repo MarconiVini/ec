@@ -26,5 +26,11 @@
             = link_to t('sign_out'), destroy_admin_session_path, method: :delete
           %li
             = link_to t('admin'), new_admin_session_path
+
+        %li
+          %a
+            %span.glyphicon.glyphicon-shopping-cart
+            %span{style: "visibility: hidden;"} 1
+
             
 

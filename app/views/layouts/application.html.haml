@@ -6,12 +6,10 @@
     =render 'layouts/header'
     .container
       .row
-        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+        =render 'layouts/flash'
         .col-md-4
           menu
         .col-md-8
-          =render 'layouts/flash'
-
           = yield
   -if Rails.env.development?
     params
