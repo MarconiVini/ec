@@ -4,4 +4,6 @@
       %a
         =p.name
         %br
-        =image_tag p.images.first.file.url
+        - p.images_url.each do |url|
+          =image_tag url
+          

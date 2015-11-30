@@ -19,7 +19,6 @@ RSpec.describe Product, :type => :model do
           expect(file_name).to include(image_name)
         end
       end
-      
     end
   end
 end
