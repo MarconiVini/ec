@@ -7,6 +7,12 @@ GIT
       mongoid (>= 3.0, <= 6.0)
 
 GIT
+  remote: git://github.com/bmabey/database_cleaner.git
+  revision: 1cab518efb4cd4d24b751252ab88fe562e302d33
+  specs:
+    database_cleaner (1.5.1)
+
+GIT
   remote: git://github.com/svenfuchs/rails-i18n.git
   revision: 5b4d5279a99e8eb19fc75282d21424b99f65a265
   branch: master
@@ -98,7 +104,6 @@ GEM
       execjs
     coffee-script-source (1.9.1.1)
     connection_pool (2.2.0)
-    database_cleaner (1.4.1)
     debug_inspector (0.0.2)
     devise (3.5.2)
       bcrypt (~> 3.0)
@@ -431,7 +436,7 @@ DEPENDENCIES
   capybara
   carrierwave-mongoid
   coffee-rails (~> 4.1.0)
-  database_cleaner (= 1.4.1)
+  database_cleaner!
   devise
   factory_girl_rails
   faker
@@ -460,3 +465,6 @@ DEPENDENCIES
   turbolinks
   uglifier (>= 1.3.0)
   web-console (~> 2.0)
+
+BUNDLED WITH
+   1.11.2

@@ -53,7 +53,8 @@ group :development, :test do
   gem 'guard-rspec', require: false
   gem 'capybara'
   gem 'mongoid-rspec'
-  gem 'database_cleaner', '1.4.1'
+  #gem 'database_cleaner', '1.4.1'
+  gem 'database_cleaner', :github => 'bmabey/database_cleaner'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
   gem "better_errors"
