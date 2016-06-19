@@ -5,6 +5,10 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.4'
 # Use sqlite3 as the database for Active Record
 gem 'pg'
+
+# Use Puma as the app server
+gem 'puma'
+
 #database for heavy load
 gem 'mongoid', '4.0.2' 
 gem 'mongoid-slug'
