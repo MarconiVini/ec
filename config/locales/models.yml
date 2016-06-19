@@ -4,5 +4,5 @@ pt-BR:
       user: Usuário
     attributes:
       user:
-        login: "Handle"
+        password: Senha
 
