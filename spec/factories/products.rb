@@ -1,6 +1,8 @@
 FactoryGirl.define do
   factory :product do
     name        { Faker::Commerce.product_name }
+    base_price  { Faker::Commerce.price }
+
     
     initialize_with do
       product = Product.new(

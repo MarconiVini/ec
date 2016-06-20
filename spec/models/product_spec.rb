@@ -21,4 +21,41 @@ RSpec.describe Product, :type => :model do
       end
     end
   end
+
+  describe '.addon_sum' do
+    let(:product) { create(:product) }
+    let(:addon) { create(:addon) }
+
+    it 'sums up addon' do
+      product.addon_sum addon
+      expect(product.addons.count).to eq 1
+      expect(product.addons.first).to eq addon
+    end
+  end
+
+  context 'with addons' do
+    let(:product) { create(:product, base_price: base_price) }
+    let(:addon) { create(:addon, value: base_addon, type: Addon::PERCENTAGE) }
+    let(:addon_money) { create(:addon, value: money_value, type: Addon::MONEY) }
+    let(:base_price) { 100 }
+    let(:base_addon) { 10 }
+    let(:money_value) { 14 }
+
+    it 'can sum-up an addon percentage into price' do
+      product.addon_sum(addon)
+      expect(product.price).to eq(base_price + base_price * (base_addon / 100.0))
+    end
+
+    it 'can sum-up an addon money into price' do
+      product.addon_sum(addon_money)
+      expect(product.price).to eq(base_price + money_value)
+    end
+
+    it 'can sum-up an addon money and percentage into price' do
+      product.addon_sum(addon_money)
+      product.addon_sum(addon)
+
+      expect(product.price).to eq(base_price + money_value + base_price * (base_addon / 100.0))
+    end
+  end
 end
