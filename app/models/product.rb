@@ -8,6 +8,7 @@ class Product
 
   field :base_price
   field :price
+  field :stock
 
   #addons is a sum of all values that change current base_price
   field :addons, type: Array, default: []
