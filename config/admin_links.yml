@@ -6,3 +6,4 @@ header:
 lateral:
   Administradores: "admin_admins_path"
   Produtos: "admin_products_path"
+  Addons: "admin_addons_path"

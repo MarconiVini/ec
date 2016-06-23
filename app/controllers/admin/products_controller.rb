@@ -46,7 +46,7 @@ class Admin::ProductsController < Admin::BaseAdminController
 
   private
   def set_header
-    @header = "Administradores - #{action_name}"
+    @header = "Produtos - #{action_name}"
   end
 
   def issue_images_to_model(product_files, product)

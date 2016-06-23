@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     get 'dashboard' => 'dashboard#index'
     resources :admins, except: [:show]
     resources :products#, param: :product_id
+    resources :addons
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

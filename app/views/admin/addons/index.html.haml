@@ -1,0 +1,44 @@
+- entity = Addon
+%table.table.table-hover
+  %tr
+    %th
+      =entity.human_attribute_name(:name)
+    %th
+      =entity.human_attribute_name(:type)
+    %th
+      =entity.human_attribute_name(:description)
+    %th
+      =entity.human_attribute_name(:value)
+    %th
+      Criado
+    %th
+      Visualizar
+    %th
+      Editar
+    %th
+      Deletar
+  - @addons.each do |addon|
+    %tr
+      %td
+        =addon.name
+      %td
+        =addon.type
+      %td
+        =addon.description
+      %td
+        =addon.value
+      %td
+        =addon.created_at
+      %td
+        =link_to t("buttons.show_addon"), admin_addon_path(addon), class: "btn btn-default"
+      %td
+        =link_to t(:edit), edit_admin_addon_path(addon), class: "btn btn-default"
+      %td
+        =button_to t(:delete), admin_addon_path(addon), method: :delete, data: { confirm: t(:are_you_sure) }, class: "btn btn-danger"
+
+
+  %tr
+    %td
+      =paginate @addons
+
+=button_to t("buttons.new_addon"), new_admin_addon_path, method: :get, css: "btn btn-default"

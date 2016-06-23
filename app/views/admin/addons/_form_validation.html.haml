@@ -1,0 +1,6 @@
+-if @addon.errors.any?
+  .well.alert.alert-danger
+    %p= "Devido à #{pluralize(@addon.errors.count, 'erro')}. Não foi possível salvar o addon."
+    %ul
+      - @addon.errors.full_messages.each do |msg|
+        %li= msg

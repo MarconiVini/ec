@@ -6,6 +6,8 @@ pt-BR:
     new_admin: "Novo admin"
     new_product: "novo produto"
     show_product: "visualizar produto"
+    new_addon: "novo addon"
+    show_addon: "visualizar addon"
 
   enter_email: 'Digite seu endereço de email'
   enter_password: 'Digite sua senha'
