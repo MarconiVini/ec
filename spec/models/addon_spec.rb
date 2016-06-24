@@ -17,4 +17,23 @@ RSpec.describe Addon, :type => :model do
       expect(addon.for_product_params).to eq({ id: addon.id, type: addon.type, value: addon.value })
     end
   end
+
+  context 'document validation' do
+    let(:addon) { build(:addon, type: "anything") }
+
+    context 'wrong type' do
+      it 'returns error' do
+        addon.save
+        expect(addon.valid?).not_to eq true
+      end
+    end
+
+    context 'right type' do
+      it 'returns error' do
+        addon.type = Addon::MONEY
+        addon.save
+        expect(addon.valid?).to eq true
+      end
+    end
+  end
 end

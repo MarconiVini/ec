@@ -4,7 +4,7 @@
     =f.text_field :name, class: "form-control"
   .form-group
     =f.label :type
-    =f.text_field :type, class: "form-control"
+    =f.select :type, (["Selecione"]+Addon::ALL), class: "form-control"
   .form-group
     =f.label :description
     =f.text_field :description, class: "form-control"

@@ -6,6 +6,10 @@ class Addon
   MONEY = "money"
   PERCENTAGE = "percentage"
 
+  ALL = [PERCENTAGE, MONEY]
+
+  validates :type, inclusion: { in: Addon::ALL }
+
   #{"id": 3, "value": 20, type: "percentage"}
   field :name, type: String
   field :value, type: Integer

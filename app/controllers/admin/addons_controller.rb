@@ -8,6 +8,13 @@ class Admin::AddonsController < Admin::BaseAdminController
   end
 
   def create
+    @addon = Addon.new(addon_params)
+    if @addon.save
+      flash[:notice] = "O Addon \"#{@addon.name}\" foi criado com sucesso !"
+      redirect_to action: :index
+    else
+      render :new
+    end
   end
 
   def update
@@ -25,5 +32,9 @@ class Admin::AddonsController < Admin::BaseAdminController
   private
     def set_header
       @header = "Addons de Produtos - #{action_name}"
+    end
+
+    def addon_params
+      params.require(:addon).permit(:name, :type, :description, :value)
     end
 end

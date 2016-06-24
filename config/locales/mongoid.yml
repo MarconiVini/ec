@@ -34,7 +34,6 @@ pt-BR:
         unsupported_version:
           MongoDB %{version} não é suportada, por favor atualize para a
           versão %{mongo_version}.
-        validations: 'A validação falhou - %{errors}.'
         invalid_collection:
           O acesso à colecção para %{klass} não é permitido porque
           é um documento embutido, por favor acesse à colecção através
@@ -58,4 +57,7 @@ pt-BR:
           You cannot call create or create! through a relational association
           relation (%{document}) who is parent (%{base}) is not already saved.
         blank_on_locale: "%{location} não pode ficar em branco"
-          
+        validations:
+            message: "A validação do %{document} falhou."
+            summary: "Os seguintes erros foram encontrados: %{errors}"
+            resolution: "Tente persistir o documento com dados validos ou remova as validações."          
