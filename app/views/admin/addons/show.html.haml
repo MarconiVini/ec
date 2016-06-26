@@ -1,0 +1,15 @@
+.form-group
+  name:
+  =@addon.name
+.form-group
+  type:
+  =@addon.type
+.form-group
+  Description:
+  =@addon.description
+.form-group
+  Value:
+  =@addon.value
+
+=link_to "voltar", admin_addons_path
+=link_to "editar", edit_admin_addon_path

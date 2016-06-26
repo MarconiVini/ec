@@ -18,15 +18,28 @@ class Admin::AddonsController < Admin::BaseAdminController
   end
 
   def update
+    @addon = Addon.find(params[:id])
+    paramters = addon_params
+    if @addon.update_attributes paramters
+      flash[:notice] = "O Addon \"#{@addon.name}\" foi editado com sucesso !"
+      redirect_to admin_addons_path
+    else
+      render :action => :edit
+    end
   end
 
   def show
+    @addon = Addon.find(params[:id])
   end
 
   def destroy
+    addon = Addon.find(params[:id])
+    addon.delete
+    redirect_to admin_addons_path
   end
 
   def edit
+    @addon = Addon.find(params[:id])
   end
 
   private
