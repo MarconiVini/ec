@@ -49,9 +49,8 @@ gem 'kaminari'
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
-  gem 'rspec-rails', '~> 3.0.0'     #test framework
+  gem 'rspec-rails', '~> 3.1'     #test framework
   gem 'factory_girl_rails'        #create fixtures for tests
-  gem 'shoulda-matchers'
   gem 'timecop'             #create time mockups
   gem 'pry-rails'
   gem 'guard-rspec', require: false
@@ -63,17 +62,21 @@ group :development, :test do
   gem 'byebug'
   gem "better_errors"
 
-  # Access an IRB console on exception pages or by using <%= console %> in views
-  gem 'web-console', '~> 2.0'
   gem 'faker'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
+
+group :test do
+  gem 'shoulda-matchers', require: false  
+end
+# Access an IRB console on exception pages or by using <%= console %> in views
+gem 'web-console', '~> 2.0', group: :development  
 
 gem "haml-rails"
 
 gem 'bootstrap-sass', '~> 3.2.0'    #gem for sass
 gem 'autoprefixer-rails'
 gem 'devise'              #authentication gem
-gem 'rails-i18n', github: 'svenfuchs/rails-i18n', branch: 'master'
+gem 'rails-i18n'#, github: 'svenfuchs/rails-i18n', branch: 'master'
 gem "paperclip", "~> 4.2"
