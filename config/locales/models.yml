@@ -6,3 +6,11 @@ pt-BR:
       user:
         password: Senha
 
+  mongoid:
+    models:
+      product: Produto
+    attributes:
+      product:
+          name: Nome
+          images: Imagens
+          base_price: "Preço base"

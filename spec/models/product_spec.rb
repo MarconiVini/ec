@@ -10,6 +10,45 @@ RSpec.describe Product, :type => :model do
       expect(product.images.count).to eq 1 
     end
 
+    context "fields types" do
+      describe 'base_price' do
+        let(:product) { build(:product, base_price: base_price) }
+        let(:invalid_product) { build(:product, base_price: invalid_base_price) }
+        let(:product_zero_base_price) { build(:product, base_price: 0.0) }
+        let(:base_price) { 33.99 }
+        let(:invalid_base_price) { "R$ 44.99" }
+        it 'saves if .2f' do
+          product.save
+          expect(product.base_price).to eq base_price
+        end
+
+        it 'does not save if ordinary string' do
+          expect(invalid_product.save).to eq false
+          expect(invalid_product.base_price).not_to eq invalid_base_price
+        end
+
+        it 'does not save if base_price is zero' do
+          expect(product_zero_base_price.save).to eq false
+        end
+      end
+    end
+
+
+    context 'validation' do
+      describe 'base price' do
+        let(:product) { build(:product, base_price: nil) }
+        it 'is required' do
+          expect(product.save).to eq false
+          expect(product.errors.keys.first).to eq :base_price
+        end
+
+        it 'saves when product base_price is supplied' do
+          product.base_price = 30.99
+          expect(product.save).to eq true  
+        end
+      end       
+    end 
+
     describe '#images_url' do
       let(:product_with_images) { create(:product_with_images, image_names: image_names) }
       let(:image_names) { ["img1.jpg", "img2.jpg"] }

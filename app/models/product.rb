@@ -6,13 +6,15 @@ class Product
   field :name, type: String
   slug :name
 
-  field :base_price
+  field :base_price, type: Float
   field :price
   field :stock
-
   #addons is a sum of all values that change current base_price
   field :addons, type: Array, default: []
 
+
+  validates :base_price, presence: true
+  before_validation :check_price_is_not_null
 
   embeds_many :images, cascade_callbacks: true, class_name: 'Image'
 
@@ -26,6 +28,13 @@ class Product
   end
 
   protected
+    def check_price_is_not_null
+      if self.base_price == 0.0
+        self.errors.add(:base_price, "Valor do preço base não pode ser 0.0")
+        return false
+      end 
+    end
+
     def update_price
       prices_to_add = addons.map do |a|
         if a.type == Addon::PERCENTAGE

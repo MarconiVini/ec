@@ -60,4 +60,14 @@ pt-BR:
         validations:
             message: "A validação do %{document} falhou."
             summary: "Os seguintes erros foram encontrados: %{errors}"
-            resolution: "Tente persistir o documento com dados validos ou remova as validações."          
+            resolution: "Tente persistir o documento com dados validos ou remova as validações."
+        unknown_attribute:
+          message: "Attempted to set a value for '%{name}' which is not
+            allowed on the model %{klass}."
+          summary: "Without including Mongoid::Attributes::Dynamic in your model
+            and the attribute does not already exist in the attributes hash,
+            attempting to call %{klass}#%{name}= for it is not allowed. This is
+            also triggered by passing the attribute to any method that accepts an
+            attributes hash, and is raised instead of getting a NoMethodError."
+          resolution: "You can include Mongoid::Attributes::Dynamic if you
+            expect to be writing values for undefined fields often."          
