@@ -3,6 +3,8 @@ class Product
   include Mongoid::Slug
   include Mongoid::Timestamps
 
+  attr_accessor :base_price_string
+
   field :name, type: String
   slug :name
 
@@ -14,7 +16,7 @@ class Product
 
 
   validates :base_price, presence: true
-  before_validation :check_price_is_not_null
+  before_validation :save_base_price, :check_price_is_not_null
 
   embeds_many :images, cascade_callbacks: true, class_name: 'Image'
 
@@ -28,9 +30,16 @@ class Product
   end
 
   protected
+    def save_base_price
+      if self.base_price_string != nil && self.base_price_string.class == String 
+        self.base_price_string.slice!("R$ ")
+        self.base_price = self.base_price_string.gsub(".", "").gsub(",", ".").to_f
+      end
+    end
+
     def check_price_is_not_null
       if self.base_price == 0.0
-        self.errors.add(:base_price, "Valor do preço base não pode ser 0.0")
+        self.errors.add(:base_price_string, "Valor do preço base não pode ser 0.0")
         return false
       end 
     end

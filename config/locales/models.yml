@@ -14,3 +14,4 @@ pt-BR:
           name: Nome
           images: Imagens
           base_price: "Preço base"
+          base_price_string: "Preço base"

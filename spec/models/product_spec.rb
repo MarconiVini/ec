@@ -12,19 +12,13 @@ RSpec.describe Product, :type => :model do
 
     context "fields types" do
       describe 'base_price' do
-        let(:product) { build(:product, base_price: base_price) }
-        let(:invalid_product) { build(:product, base_price: invalid_base_price) }
-        let(:product_zero_base_price) { build(:product, base_price: 0.0) }
-        let(:base_price) { 33.99 }
-        let(:invalid_base_price) { "R$ 44.99" }
+        let(:product) { build(:product, base_price_string: valid_base_price) }
+        let(:product_zero_base_price) { build(:product, base_price_string: "") }
+        let(:base_price) { 44.99 }
+        let(:valid_base_price) { "R$ 44,99" }
         it 'saves if .2f' do
           product.save
           expect(product.base_price).to eq base_price
-        end
-
-        it 'does not save if ordinary string' do
-          expect(invalid_product.save).to eq false
-          expect(invalid_product.base_price).not_to eq invalid_base_price
         end
 
         it 'does not save if base_price is zero' do
@@ -36,14 +30,14 @@ RSpec.describe Product, :type => :model do
 
     context 'validation' do
       describe 'base price' do
-        let(:product) { build(:product, base_price: nil) }
+        let(:product) { build(:product, base_price_string: "") }
         it 'is required' do
           expect(product.save).to eq false
-          expect(product.errors.keys.first).to eq :base_price
+          expect(product.errors.keys.first).to eq :base_price_string
         end
 
-        it 'saves when product base_price is supplied' do
-          product.base_price = 30.99
+        it 'saves when product base_price_string is supplied' do
+          product.base_price_string = "R$ 30.99"
           expect(product.save).to eq true  
         end
       end       
@@ -73,9 +67,10 @@ RSpec.describe Product, :type => :model do
   end
 
   context 'with addons' do
-    let(:product) { create(:product, base_price: base_price) }
+    let(:product) { create(:product, base_price_string: base_price_string) }
     let(:addon) { create(:addon, value: base_addon, type: Addon::PERCENTAGE) }
     let(:addon_money) { create(:addon, value: money_value, type: Addon::MONEY) }
+    let(:base_price_string) { "R$ #{base_price}" }
     let(:base_price) { 100 }
     let(:base_addon) { 10 }
     let(:money_value) { 14 }

@@ -9,7 +9,8 @@ class Admin::ProductsController < Admin::BaseAdminController
 
   def create
     ###TODO: remover o product_params["files"] do product_params de forma a conseguirmos fazer: Product.new(product_params)
-    @product = Product.new(name: product_params[:name], base_price: product_params[:base_price])
+    
+    @product = Product.new(name: product_params[:name], base_price_string: product_params[:base_price_string])
     @product = issue_images_to_model(product_params["files"], @product)
     if @product.save
       flash[:notice] = "O Produto \"#{@product.name}\" foi criado com sucesso !"
@@ -60,6 +61,6 @@ class Admin::ProductsController < Admin::BaseAdminController
   end
 
   def product_params
-    params.require(:product).permit(:name, :base_price, files: [])
+    params.require(:product).permit(:name, :base_price_string, files: [])
   end
 end

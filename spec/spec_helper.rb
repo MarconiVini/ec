@@ -45,7 +45,8 @@ RSpec.configure do |config|
   config.include ControllerMacros, :type => :controller
 
   config.include FactoryGirl::Syntax::Methods
-
+  config.filter_run :focus => true
+  config.run_all_when_everything_filtered = true
   config.after(:each) do
     if Rails.env.test? || Rails.env.cucumber?
       FileUtils.rm_rf(Dir["#{Rails.root}/public/uploads/tmp"])

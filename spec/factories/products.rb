@@ -1,7 +1,11 @@
 FactoryGirl.define do
   factory :product do
     name        { Faker::Commerce.product_name }
-    base_price  { Faker::Commerce.price }
+    base_price_string do 
+      u = "R$ #{Faker::Commerce.price.to_s.gsub(',', '.')}"
+      u[-3] = ","
+      u
+    end
     stock       1
     
     initialize_with do

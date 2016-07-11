@@ -3,8 +3,8 @@
     =f.label :name
     =f.text_field :name, class: "form-control"
   .form-group
-    =f.label :base_price
-    =f.text_field :base_price, class: "form-control money"
+    =f.label :base_price_string
+    =f.text_field :base_price_string, class: "form-control money"
   .form-group
     = f.label :images
     = f.file_field :images, multiple: true, name: "product[files][]"
