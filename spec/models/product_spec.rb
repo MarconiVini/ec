@@ -7,7 +7,6 @@ RSpec.describe Product, :type => :model do
 
     it "tests correct correct properties from factory" do
       expect(product.name).to eq name
-      expect(product.images.count).to eq 1 
     end
 
     context "fields types" do
@@ -90,6 +89,16 @@ RSpec.describe Product, :type => :model do
       product.addon_sum(addon)
 
       expect(product.price).to eq(base_price + money_value + base_price * (base_addon / 100.0))
+    end
+  end
+
+  context 'without addons' do
+    let(:product) { create(:product, base_price_string: base_price_string) }
+    let(:base_price_string) { "R$ #{base_price}" }
+    let(:base_price) { 100 }
+
+    it 'price is equals to base_price' do
+      expect(product.price).to eq base_price
     end
   end
 end

@@ -17,6 +17,8 @@ class Product
 
   validates :base_price, presence: true
   before_validation :save_base_price, :check_price_is_not_null
+  before_save :update_price
+
 
   embeds_many :images, cascade_callbacks: true, class_name: 'Image'
 
@@ -52,6 +54,7 @@ class Product
           a.value
         end
       end
-      self.price = (base_price + prices_to_add.reduce(:+)).round(2)
+      add_price = prices_to_add.empty? ? 0 : prices_to_add.reduce(:+)
+      self.price = (base_price + add_price).round(2)
     end
 end

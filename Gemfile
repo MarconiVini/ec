@@ -51,7 +51,7 @@ gem 'kaminari'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.1'     #test framework
-  gem 'factory_girl_rails'        #create fixtures for tests
+  gem 'factory_girl_rails', require: false        #create fixtures for tests
   gem 'timecop'             #create time mockups
   gem 'pry-rails'
   gem 'guard-rspec', require: false

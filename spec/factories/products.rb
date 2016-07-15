@@ -12,8 +12,8 @@ FactoryGirl.define do
       product = Product.new(
         name: Faker::Commerce.product_name  
       )
-      product.images << FactoryGirl.build(:image)
-      product
+#      product.images << FactoryGirl.build(:image)
+#      product
     end
     
     factory :product_with_images do
