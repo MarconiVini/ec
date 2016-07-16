@@ -4,7 +4,7 @@ CarrierWave.configure do |config|
     provider:              'AWS',                        # required
     aws_access_key_id:     'AKIAJESVXJZDSTWPF4XQ',                        # required
     aws_secret_access_key: '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',                        # required
-    region:                'sa-east-1',                  # optional, defaults to 'us-east-1'
+    region:                'sa-east-1'                  # optional, defaults to 'us-east-1'
     #host:                  's3-website-sa-east-1.amazonaws.com',             # optional, defaults to nil
     #endpoint:              'http://ecmatrixbucket.s3-website-sa-east-1.amazonaws.com' # optional, defaults to nil
   }
