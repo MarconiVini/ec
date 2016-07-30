@@ -16,6 +16,6 @@
 !/log/.keep
 /tmp
 /coverage
-
 # Add ignore to secrets.yml
 /config/secrets.yml
+/config/initializers/fog.rb
