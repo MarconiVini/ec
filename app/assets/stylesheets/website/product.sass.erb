@@ -1,0 +1,59 @@
+.product-list
+  li
+    list-style: none
+
+.product
+  float: left
+  display: block
+  padding: 4px
+  margin-bottom: 20px
+  background-color: #fff
+  border: 1px solid #ddd
+  border-radius: 4px
+  min-height: 260px
+  transition: border .2s ease-in-out
+  img
+    max-width: 100%
+  &:hover
+    -webkit-box-shadow: 2px 2px 5px 1px rgba(0,0,0,0.75)
+    -moz-box-shadow: 2px 2px 5px 1px rgba(0,0,0,0.75)
+    box-shadow: 2px 2px 5px 1px rgba(0,0,0,0.75)
+  
+  a
+    &:hover
+      text-decoration: none
+  
+  .details
+    margin: 5px 0 0 0
+    width: 100%
+
+    .description-price
+      float: left
+
+      .from.strike
+        font-size: 10px
+        color: #999
+        text-decoration: line-through
+      .to
+        font-size: 14px
+        color: #56AD59
+
+    .buttons
+      float: right
+      .add-cart
+        background: url(<%= asset_path('products/white-add-cart.png') %>) #56AD59 no-repeat center  
+        width: 36px
+        height: 36px
+        margin: 0
+        padding: 0
+        border: none
+        float: right
+
+
+
+  .name
+    text-align: center
+    padding: 2px
+    margin: 3px 0
+
+    

@@ -1,9 +1,23 @@
-%ul
-  - @products.each do |p|
-    %li
-      %a
-        =p.name
-        %br
-        - p.images_url.each do |url|
-          =image_tag url
+%ul.product-list
+  - @products.each do |product|
+    %li.col-md-3.col-sm-6
+      .product
+        %a
+          .name
+            =product.name
+        
+          %figure
+            - #p.images_url.each do |url|
+            =image_tag product.images_url.first
+
+          .details
+            .description-price
+              .from.strike
+                De: R$ 40,99
+              .to 
+                Por: R$ 
+                =product.price
+            .div.buttons
+              %button.add-cart
           
+            

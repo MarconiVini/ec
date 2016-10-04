@@ -7,13 +7,14 @@
     .container
       .row
         =render 'layouts/flash'
-        .col-md-4
+        .col-md-2
           menu
-        .col-md-8
+        .col-md-10
           = yield
-  -if Rails.env.development?
+
     params
     = debug(params) 
+  -if params[:debug] == 'true' && Rails.env.development?
     %hr
     session
     = debug(session) 

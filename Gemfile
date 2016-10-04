@@ -49,6 +49,10 @@ gem 'kaminari'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+group :development do
+  gem "better_errors"
+end
+
 group :development, :test do
   gem 'rspec-rails', '~> 3.1'     #test framework
   gem 'factory_girl_rails', require: false        #create fixtures for tests
@@ -61,7 +65,7 @@ group :development, :test do
   gem 'database_cleaner', :github => 'bmabey/database_cleaner'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
-  gem "better_errors"
+  gem 'awesome_print'
 
   gem 'faker'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
