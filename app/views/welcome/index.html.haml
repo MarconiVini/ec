@@ -4,7 +4,8 @@
       .product
         %a
           .name
-            =product.name
+            %span
+              =product.name
         
           %figure
             - #p.images_url.each do |url|
