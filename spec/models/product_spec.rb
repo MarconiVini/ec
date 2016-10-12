@@ -1,6 +1,35 @@
 require 'rails_helper'
 
 RSpec.describe Product, :type => :model do
+  let(:product) { create(:product) }  
+
+  describe '#current_price' do
+    it 'returns a string represemtation of money with R$' do
+      expect(product.current_price).to eq("R$ #{product.price.to_s.gsub!('.',',')}")
+    end
+  end
+
+  describe '#images_url' do
+    let(:product_with_images) { create(:product_with_images, image_names: image_names) }
+    let(:image_names) { ["img1.jpg", "img2.jpg"] }
+    it 'recovers all images urls' do
+      image_names.each do |image_name|
+        file_name = product_with_images.images_url.find{|i| i =~ /#{image_name}/ }
+        expect(file_name).to include(image_name)
+      end
+    end
+  end
+
+  describe '#addon_sum' do
+    let(:addon) { create(:addon) }
+
+    it 'sums up addon' do
+      product.addon_sum addon
+      expect(product.addons.count).to eq 1
+      expect(product.addons.first).to eq addon
+    end
+  end
+
   context "object creation" do
     let(:product) { create(:product, name: name) }
     let(:name) { "simple-product" }
@@ -26,7 +55,6 @@ RSpec.describe Product, :type => :model do
       end
     end
 
-
     context 'validation' do
       describe 'base price' do
         let(:product) { build(:product, base_price_string: "") }
@@ -40,28 +68,6 @@ RSpec.describe Product, :type => :model do
           expect(product.save).to eq true  
         end
       end       
-    end 
-
-    describe '#images_url' do
-      let(:product_with_images) { create(:product_with_images, image_names: image_names) }
-      let(:image_names) { ["img1.jpg", "img2.jpg"] }
-      it 'recovers all images urls' do
-        image_names.each do |image_name|
-          file_name = product_with_images.images_url.find{|i| i =~ /#{image_name}/ }
-          expect(file_name).to include(image_name)
-        end
-      end
-    end
-  end
-
-  describe '.addon_sum' do
-    let(:product) { create(:product) }
-    let(:addon) { create(:addon) }
-
-    it 'sums up addon' do
-      product.addon_sum addon
-      expect(product.addons.count).to eq 1
-      expect(product.addons.first).to eq addon
     end
   end
 

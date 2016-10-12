@@ -3,6 +3,8 @@ class Product
   include Mongoid::Slug
   include Mongoid::Timestamps
 
+  CURRENCY = "R$".freeze
+
   attr_accessor :base_price_string
 
   field :name, type: String
@@ -21,6 +23,10 @@ class Product
 
 
   embeds_many :images, cascade_callbacks: true, class_name: 'Image'
+
+  def current_price
+    "#{CURRENCY} #{self.price.to_s.gsub!('.',',')}"
+  end
 
   def addon_sum(addon)
     addons.push(addon)
