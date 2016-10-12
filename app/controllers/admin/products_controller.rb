@@ -22,9 +22,9 @@ class Admin::ProductsController < Admin::BaseAdminController
 
   def update
     @product = Product.find(params[:id])
-    paramters = product_params
-    @product = issue_images_to_model(paramters.delete("files"), @product)
-    if @product.update_attributes paramters
+    params = product_params
+    @product = issue_images_to_model(params.delete("files"), @product)
+    if @product.update_attributes params
       flash[:notice] = "O Produto \"#{@product.name}\" foi editado com sucesso !"
       redirect_to admin_products_path
     else

@@ -32,6 +32,7 @@ class Product
   end
 
   protected
+    #removes the "R$"" from price and changes "," to "." for the float price
     def save_base_price
       if self.base_price_string != nil && self.base_price_string.class == String 
         self.base_price_string.slice!("R$ ")
