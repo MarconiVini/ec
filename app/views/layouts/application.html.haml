@@ -8,7 +8,20 @@
       .row
         =render 'layouts/flash'
         .col-md-2
-          menu
+          .menu-container
+            %ul.menu-lateral.list-group
+              %li.list-group-item
+                %a Item menu 1
+                %ul.submenu.hide
+                  %li.list-group-item
+                    Submenu 1
+                  %li.list-group-item
+                    Submenu 2
+              %li.list-group-item.active
+                %a Item menu 2
+              %li.list-group-item
+                %a Item menu 3
+
         .col-md-10
           = yield
 
