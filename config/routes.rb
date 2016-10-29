@@ -4,8 +4,6 @@ Rails.application.routes.draw do
 
   devise_for :users, :path => 'usuario', controllers: { sessions: 'sessions', registrations: 'registrations' }, 
     :path_names => { :sign_in => "login", :sign_out => "logout", :sign_up => "registrar" } 
-
-  root 'welcome#index'
   
   namespace :admin do
     get 'dashboard' => 'dashboard#index'
@@ -13,6 +11,11 @@ Rails.application.routes.draw do
     resources :products#, param: :product_id
     resources :addons
   end
+
+  root 'welcome#index'
+  
+  get 'cart/index'
+  
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
