@@ -1,6 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Cart, :type => :model do
+  let(:product)     { create(:product) }
+  let(:product_two) { create(:product) }    
+  
   context "object creation" do
     let(:empty_cart)  { build(:cart) }
     
@@ -9,10 +12,7 @@ RSpec.describe Cart, :type => :model do
     end
   end
 
-  context 'session with products' do
-    let(:product)     { create(:product) }
-    let(:product_two) { create(:product) }
-    
+  context 'session with products' do  
     let(:cart_one_product) do  
       Cart.new({product.id.to_s => 1})
     end
@@ -45,8 +45,6 @@ RSpec.describe Cart, :type => :model do
   end
 
   describe '#to_session' do
-    let(:product)     { create(:product) }
-    let(:product_two) { create(:product) }
     let(:hash) { { product_two.id.to_s => 1, product.id.to_s => 4 } }
     let(:cart) do  
       Cart.new(hash)
@@ -56,6 +54,25 @@ RSpec.describe Cart, :type => :model do
       it 'returns hash with ID and quantity' do
         expect(cart.to_session).to eq(hash)
       end
+    end
+  end
+
+  describe '#add_item' do
+    let(:product_three) { create(:product) }
+    let(:hash) { { product.id.to_s => 1, product_two.id.to_s => 1 } }
+    let(:cart) { Cart.new hash }
+
+    it 'adds a new item to cart' do
+      cart.add_item(product_three.id.to_s)
+      expect(cart.products.count).to eq 3
+      expect(cart.products[product_three]).to eq 1
+    end
+
+    it 'adds same item three times' do
+      cart.add_item(product_three.id.to_s)
+      cart.add_item(product_three.id.to_s)
+      cart.add_item(product_three.id.to_s)
+      expect(cart.products[product_three]).to eq 3
     end
   end
 end
