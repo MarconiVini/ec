@@ -1,2 +1,10 @@
 %h1 Cart#index
 %p Find me in app/views/cart/index.html.haml
+
+%h2 Produtos
+
+%ul
+  -@products.each do |product|
+    %li
+      =product.name
+  

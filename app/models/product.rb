@@ -16,7 +16,6 @@ class Product
   #addons is a sum of all values that change current base_price
   field :addons, type: Array, default: []
 
-
   validates :base_price, presence: true
   before_validation :save_base_price, :check_price_is_not_null
   before_save :update_price

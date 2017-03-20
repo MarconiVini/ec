@@ -13,8 +13,11 @@ Rails.application.routes.draw do
   end
 
   root 'welcome#index'
-  
-  get 'cart/index'
+
+  namespace :cart do
+    get :index
+    post :add_item
+  end  
   
 
   # The priority is based upon order of creation: first created -> highest priority.

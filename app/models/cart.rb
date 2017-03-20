@@ -4,7 +4,7 @@ class Cart
 
   def initialize(cart)
     to_products(cart)
-    @session_hash = cart
+    @session_hash ||= cart
   end
 
   def add_item(id)
@@ -31,6 +31,8 @@ class Cart
 
   def to_products(cart)
     @products ||= { }
+
+    return { } if cart.nil?
 
     cart.each do |key, value|
       @products[Product.find(key)] = value

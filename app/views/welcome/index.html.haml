@@ -1,7 +1,7 @@
 %ul.product-list
   - @products.each do |product|
     %li.col-md-3.col-sm-6
-      .product
+      .product{data: { product_id: product.id } }
         %a
           .name
             %span
@@ -20,5 +20,5 @@
                 =product.current_price
             .div.buttons
               %button.add-cart
-          
+                
             
